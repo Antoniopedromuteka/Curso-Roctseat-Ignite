@@ -34,6 +34,7 @@ export function NewTrasactionModal({isOpen,onRequestClose}:NewTrasactionModalPro
                  onClick={onRequestClose} 
                  className="react-modal-close"
         >
+
             <img src={closeImg} alt="fechar modal"/> 
        </button> 
 
@@ -46,21 +47,23 @@ export function NewTrasactionModal({isOpen,onRequestClose}:NewTrasactionModalPro
 
                 <RadioBox 
                         type="button"
-
+                        onClick={()=> {setType('deposit')} }
                         isActive={type === 'deposit'}
+                        activeColor="green"
                        // className={type === 'deposit' ? 'active': ''}
 
-                        onClick={()=>  {setType('desposit')}}
+                     
                 >
                     <img src={incomeImg} alt="entrada"/>
                     <span>Entrada</span>
                 </RadioBox>
 
                 <RadioBox 
-                    
+                    onClick={()=>{setType('withdraw')}}
                     isActive={type === 'withdraw'}
                     type="button" 
-                    onClick={()=>{setType('withdraw')}}
+                    activeColor="red"
+              
                 >
                     <img src={outcomeImg} alt="entrada"/>
                     <span>Saida</span>
