@@ -1,6 +1,6 @@
 
 import Modal from 'react-modal';
-import { Container, TrasactionTypeContainer} from './style';
+import { Container, TrasactionTypeContainer, RadioBox} from './style';
 
 import incomeImg from '../../assets/income.svg'
 import outcomeImg from '../../assets/outcome.svg'
@@ -44,15 +44,27 @@ export function NewTrasactionModal({isOpen,onRequestClose}:NewTrasactionModalPro
 
             <TrasactionTypeContainer>
 
-                <button type="button" onClick={()=> {setType('desposit')}}>
+                <RadioBox 
+                        type="button"
+
+                        isActive={type === 'deposit'}
+                       // className={type === 'deposit' ? 'active': ''}
+
+                        onClick={()=>  {setType('desposit')}}
+                >
                     <img src={incomeImg} alt="entrada"/>
                     <span>Entrada</span>
-                </button>
+                </RadioBox>
 
-                <button type="button" onClick={()=>{setType('withdraw')}}>
+                <RadioBox 
+                    
+                    isActive={type === 'withdraw'}
+                    type="button" 
+                    onClick={()=>{setType('withdraw')}}
+                >
                     <img src={outcomeImg} alt="entrada"/>
                     <span>Saida</span>
-                </button>
+                </RadioBox>
             </TrasactionTypeContainer>
             
 
