@@ -6,7 +6,7 @@ import incomeImg from '../../assets/income.svg'
 import outcomeImg from '../../assets/outcome.svg'
 
 import closeImg from '../../assets/close.svg'
-import { useState } from 'react';
+import { FormEvent, useState } from 'react';
 
 
 interface NewTrasactionModalProps{
@@ -17,7 +17,20 @@ interface NewTrasactionModalProps{
 export function NewTrasactionModal({isOpen,onRequestClose}:NewTrasactionModalProps){
     
     const [type, setType] = useState('deposit');
+    const [title, setTitle] = useState('');
+    const [value, setValue] = useState(0);
+    const [category, setCategory] = useState('');
     
+    function handleCreateNewTrasaction(event:FormEvent){
+
+        event.preventDefault();
+
+        console.log(
+            title, value, category, type
+        );
+        
+
+    }
 
     return(
 
@@ -38,10 +51,10 @@ export function NewTrasactionModal({isOpen,onRequestClose}:NewTrasactionModalPro
             <img src={closeImg} alt="fechar modal"/> 
        </button> 
 
-        <Container>
+        <Container onSubmit={handleCreateNewTrasaction}>
         <h2>Cadastrar Transação</h2>
-            <input placeholder="titulo"/>
-            <input type="number" placeholder="valor" />
+            <input placeholder="titulo" onChange={(event) => setTitle(event.target.value)}/>
+            <input type="number" placeholder="valor" value={value}  onChange={(event) => setValue(Number(event.target.value))}/>
 
             <TrasactionTypeContainer>
 
@@ -50,6 +63,7 @@ export function NewTrasactionModal({isOpen,onRequestClose}:NewTrasactionModalPro
                         onClick={()=> {setType('deposit')} }
                         isActive={type === 'deposit'}
                         activeColor="green"
+                      
                        // className={type === 'deposit' ? 'active': ''}
 
                      
@@ -71,7 +85,7 @@ export function NewTrasactionModal({isOpen,onRequestClose}:NewTrasactionModalPro
             </TrasactionTypeContainer>
             
 
-            <input placeholder="Categoria"/>
+            <input placeholder="Categoria"   value={category} onChange={(event) => setCategory(event.target.value)}/>
 
 
             <button type="submit">Cadastrar</button>
