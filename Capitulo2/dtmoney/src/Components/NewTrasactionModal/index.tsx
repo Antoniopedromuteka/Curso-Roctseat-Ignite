@@ -1,6 +1,7 @@
 
 import Modal from 'react-modal';
 import { Container, TrasactionTypeContainer, RadioBox} from './style';
+import { api } from '../../services/api';
 
 import incomeImg from '../../assets/income.svg'
 import outcomeImg from '../../assets/outcome.svg'
@@ -25,9 +26,16 @@ export function NewTrasactionModal({isOpen,onRequestClose}:NewTrasactionModalPro
 
         event.preventDefault();
 
-        console.log(
-            title, value, category, type
-        );
+        const data = {
+             title, 
+             value, 
+             category,
+              type 
+        }
+
+        api.post('/transaction',data)
+         
+       
         
 
     }
