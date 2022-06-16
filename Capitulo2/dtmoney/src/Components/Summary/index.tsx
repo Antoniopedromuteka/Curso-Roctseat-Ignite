@@ -13,6 +13,8 @@ export function Summary(){
 
     const data = useContext(TransactionContext);
 
+    console.log(data);
+
     return(
         <Container>
     
