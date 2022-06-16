@@ -33,7 +33,7 @@ export function NewTrasactionModal({isOpen,onRequestClose}:NewTrasactionModalPro
               type 
         }
 
-        api.post('/transaction',data)
+        api.post('/transactions',data)
          
        
         
