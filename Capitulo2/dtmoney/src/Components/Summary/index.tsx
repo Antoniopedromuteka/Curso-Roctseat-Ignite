@@ -11,9 +11,9 @@ import { Container } from "./style";
 
 export function Summary(){
 
-    const data = useContext(TransactionContext);
+    const {transaction}= useContext(TransactionContext);
 
-    console.log(data);
+ 
 
     return(
         <Container>

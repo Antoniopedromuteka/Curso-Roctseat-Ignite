@@ -9,7 +9,7 @@ import { TransactionContext } from "../../TransactionContext";
 
 export function TransactionTable(){
 
-    const transaction = useContext(TransactionContext);
+    const {transaction} = useContext(TransactionContext);
 
     return(
         <Container>
@@ -24,11 +24,12 @@ export function TransactionTable(){
                     </tr>
                 </thead>
 
+            
                 <tbody>
 
-                    {transaction.map(transaction =>(
+                    {transaction.map(transaction=>(
                     
-                    <tr key={transaction.id}>
+                    <tr >
 
                             <td>{transaction.title}</td>
                             <td className={transaction.type}>{new Intl.NumberFormat('pt-br', {

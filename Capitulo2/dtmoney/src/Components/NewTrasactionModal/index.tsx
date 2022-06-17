@@ -8,36 +8,44 @@ import outcomeImg from '../../assets/outcome.svg'
 
 import closeImg from '../../assets/close.svg'
 import { FormEvent, useState } from 'react';
+import {useContext} from 'react';
+import { TransactionContext } from '../../TransactionContext';
 
 
 interface NewTrasactionModalProps{
     isOpen: boolean;
-    onRequestClose?: ()=> void;
+    onRequestClose: ()=> void;
 }
 
 export function NewTrasactionModal({isOpen,onRequestClose}:NewTrasactionModalProps){
     
+    const {createTransaction} = useContext(TransactionContext);
     const [type, setType] = useState('deposit');
     const [title, setTitle] = useState('');
-    const [value, setValue] = useState(0);
+    const [amount, setAmount] = useState(0);
     const [category, setCategory] = useState('');
     
-    function handleCreateNewTrasaction(event:FormEvent){
+    async function handleCreateNewTrasaction(event:FormEvent){
 
         event.preventDefault();
 
-        const data = {
-             title, 
-             value, 
-             category,
-              type 
-        }
 
-        api.post('/transactions',data)
-         
-       
+
+        await createTransaction({
+            
+            title,
+            amount,
+            type,
+            category,
+        })
+
         
-
+        setTitle('');
+        setAmount(0);
+        setCategory('');
+        setType('deposit');
+        onRequestClose();
+        
     }
 
     return(
@@ -62,7 +70,7 @@ export function NewTrasactionModal({isOpen,onRequestClose}:NewTrasactionModalPro
         <Container onSubmit={handleCreateNewTrasaction}>
         <h2>Cadastrar Transação</h2>
             <input placeholder="titulo" onChange={(event) => setTitle(event.target.value)}/>
-            <input type="number" placeholder="valor" value={value}  onChange={(event) => setValue(Number(event.target.value))}/>
+            <input type="number" placeholder="valor" value={amount}  onChange={(event) => setAmount(Number(event.target.value))}/>
 
             <TrasactionTypeContainer>
 
