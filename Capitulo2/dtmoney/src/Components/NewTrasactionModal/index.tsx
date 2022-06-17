@@ -8,8 +8,9 @@ import outcomeImg from '../../assets/outcome.svg'
 
 import closeImg from '../../assets/close.svg'
 import { FormEvent, useState } from 'react';
-import {useContext} from 'react';
-import { TransactionContext } from '../../TransactionContext';
+ 
+import { useTrasactions } from '../../Hooks/useTransaction';
+ 
 
 
 interface NewTrasactionModalProps{
@@ -19,7 +20,7 @@ interface NewTrasactionModalProps{
 
 export function NewTrasactionModal({isOpen,onRequestClose}:NewTrasactionModalProps){
     
-    const {createTransaction} = useContext(TransactionContext);
+    const {createTransaction} = useTrasactions();
     const [type, setType] = useState('deposit');
     const [title, setTitle] = useState('');
     const [amount, setAmount] = useState(0);

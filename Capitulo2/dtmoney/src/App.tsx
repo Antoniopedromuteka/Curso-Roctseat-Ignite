@@ -6,8 +6,8 @@ import { Header} from './Components/Header';
 import { Dashboard } from './Components/Dashboard';
 import {useState} from 'react';
 import { NewTrasactionModal } from './Components/NewTrasactionModal';
-import { TransactionContext, TransactionProvider} from './TransactionContext';
- 
+import { TransactionProvider} from './Hooks/useTransaction';
+
 
 Modal.setAppElement('#root');
 
