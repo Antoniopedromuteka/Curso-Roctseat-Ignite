@@ -1,0 +1,7 @@
+{
+  "dependencies": {
+    "@types/react-icons": "^3.0.0",
+    "react": "^18.3.0-next-e61fd91f5-20220630",
+    "react-icons": "^4.4.0"
+  }
+}
