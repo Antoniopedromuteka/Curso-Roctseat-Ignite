@@ -3,7 +3,7 @@ import Head from 'next/head'
 import Image from 'next/image'
 
 import {Flex, Button, Stack} from "@chakra-ui/react";
-import { Input } from '../Components/Form/input';
+import { Input } from '../Components/Form/Input';
  
 
 const SignIn: NextPage = () => {
